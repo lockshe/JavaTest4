@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ynu.mavena.dao.CustomerDao">
+
+    <select id="Login" resultType="Customer" parameterType="Customer">
+        select * from customer where first_name = #{first_name} and last_name = #{password}
+    </select>
+
+</mapper>

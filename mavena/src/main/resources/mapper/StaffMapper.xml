@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ynu.mavena.dao.StaffDao">
+
+    <select id="queryAddress" resultMap="addresult">
+        select address_id,address from address where address =#{address}
+    </select>
+
+    <resultMap id="addresult" type="Address">
+        <id column="address_id" property="address_id"/>
+        <result column="address_name" property="address_name"/>
+    </resultMap>
+
+    <insert id="addStaff" parameterType="Staff">
+        insert into staff (staff_id,first_name,last_name,email,address_id,store_id,username)
+        values (#{staff_id},#{first_name},#{last_name},#{email},#{address_id},#{store_id},#{username})
+    </insert>
+
+    <update id="updateStaff" parameterType="Staff">
+        update staff set first_name = #{first_name},last_name = #{last_name},address_id=#{address_id},email=#{email}
+        where staff_id = #{staff_id}
+    </update>
+
+    <delete id="deleteStaff" parameterType="int">
+        delete from staff where staff_id = #{staff_id}
+    </delete>
+
+</mapper>
